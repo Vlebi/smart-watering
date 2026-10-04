@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "kicadplugnis") (type "KiCad") (uri "C:/why not/smart_watering/smart-watering/kicadplugnis") (options "") (descr ""))
+)
