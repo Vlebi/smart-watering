@@ -22,7 +22,7 @@
 | [AC142R-02P-5.08](https://www.hestore.hu/prod_10038742.html) | External 12V power input and solenoid valve connectors | 2 | $0.66 | $1.32 | [HESTORE](https://www.hestore.hu/prod_10038742.html) |
 | [ZL201-08G (WWS8G)](https://www.hestore.hu/prod_10024167.html) | 2.54mm pitch 1x8 female headers for socketing ESP32-C3 SuperMini modules on Main and Node PCBs (2 headers per board) | 4 | $0.25 | $1.00 | [HESTORE](https://www.hestore.hu/prod_10024167.html) |
 | **Parts subtotal** | — | — | — | **$27.59** | — |
-| **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$27.59** | — |
+| **Tax & shipping** | — | — | — | **$3.85** | — |
+| **Total** | — | — | — | **$31.44** | — |
 
-$37.41 left of the tier's funding.
+$33.56 left of the tier's funding.
