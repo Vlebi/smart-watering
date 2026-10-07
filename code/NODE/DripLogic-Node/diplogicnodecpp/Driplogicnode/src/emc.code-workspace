@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"name": "emc",
+			"path": "D:/emc"
+		},
+		{
+			"name": "landclaiming",
+			"path": "../../../../../../../../../xampp/htdocs/landclaiming"
+		},
+		{
+			"name": "rawdrive",
+			"path": "../../../../../../../../../rawdrive"
+		},
+		{
+			"name": "DripLogic-Node",
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../MASTER"
+		},
+		{
+			"name": "Driplogicnode",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "emc"
+	}
+}
