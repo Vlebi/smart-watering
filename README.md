@@ -23,6 +23,7 @@ DripLogic consists of two hardware units that communicate wirelessly, without a 
   - Status LED (`D1`) on GPIO3 via a 220 Ω resistor
   - Tactile push button (`SW1`) on GPIO2 to GND
 - **Role:** Coordinates sensor polling, processes soil moisture states, and triggers irrigation commands.
+<img width="2364" height="1285" alt="image" src="https://github.com/user-attachments/assets/af4ebbd9-9c0e-4512-90c0-05ba14a42f74" />
 
 ### Watering Node
 
@@ -34,6 +35,7 @@ DripLogic consists of two hardware units that communicate wirelessly, without a 
   - N-channel MOSFET (`Q1`) for valve switching
   - 10 kΩ pull-down resistor (`R1`) for a safe gate state
   - 1N4007 flyback diode (`D1`) for inductive spike protection
+<img width="2363" height="1282" alt="image" src="https://github.com/user-attachments/assets/d73be98a-dab0-44e5-9e92-f0943f9f29a1" />
 
 ## Bill of Materials (BOM) & Estimated Cost
 
@@ -42,7 +44,6 @@ Total estimated budget for **1 Master + 1 Node** is approximately **$49.50 USD (
 | Component | Description | Qty |
 | --- | --- | :---: |
 | ESP32-C3 SuperMini | Compact Wi-Fi/BLE microcontroller | 2 |
-| I2C OLED Display | Status and telemetry readout | 1 |
 | Capacitive Soil Sensor | Corrosion-resistant moisture detection | 1 |
 | Solenoid Valve | 5V/12V gravity-feed compatible valve | 1 |
 | N-Channel MOSFET | Switching transistor (e.g., IRLZ44N or equivalent) | 1 |
