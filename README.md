@@ -73,7 +73,7 @@ Created as part of a **Hack Club** project journal documenting the end-to-end en
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/DripLogic.git
+   git clone https://github.com/Vlebi/smart-watering.git
    ```
 
 2. **Flash MicroPython** onto your ESP32-C3 SuperMini boards using `esptool.py`.
