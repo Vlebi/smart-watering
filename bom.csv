@@ -1,0 +1,12 @@
+Part,Description,QTY,Unit Price (USD),Total Price (USD),Vendor
+ESP32-C3-SUPERMINI,Main controllers for both main and node PCBs,2,3.28,6.56,HESTORE
+SOILCAP-V20,Capacitive soil moisture sensor,1,2.15,2.15,HESTORE
+AO3400A,N-channel MOSFET for valve control,1,2.55,2.55,HESTORE
+WSV-12V,1/2 inch NC 12V DC solenoid valve,1,7.88,7.88,HESTORE
+1N4007,Flyback diode for inductive spike suppression,1,1.26,1.26,HESTORE
+10K 5%,Pull-down resistor for MOSFET gate,1,1.00,1.00,HESTORE
+MP1584EN-LF,12V to 5V step-down buck converter module,1,3.87,3.87,HESTORE
+AC142R-02P-5.08,5.08mm terminal blocks for power and valve,2,0.66,1.32,HESTORE
+ZL201-08G (WWS8G),2.54mm 1x8 female headers for ESP32-C3 socketing,4,0.25,1.00,HESTORE
+Tax & Shipping,Tax and shipping for the whole order,1,3.85,3.85,HESTORE
+TOTAL,,13,,31.44,
