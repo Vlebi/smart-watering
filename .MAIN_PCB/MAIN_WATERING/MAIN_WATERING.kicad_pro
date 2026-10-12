@@ -526,7 +526,7 @@
       "netlist": "",
       "plot": "Gerbers/",
       "specctra_dsn": "",
-      "step": "",
+      "step": "MAIN_WATERING.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
