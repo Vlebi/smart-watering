@@ -105,7 +105,7 @@ Summary:
 Designed the complete DripLogic Node hardware schematic and custom PCB layout in, used MOSFET gate pull-downs, flyback diode protection, and ground planes.
 What's Next:
 Modell the main pcb.
-Time spent this session: 3 hours
+Time spent this session: 4 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/4f110bb5931c770f595eaefd2441fc1361ebad73eb633dcccdf8d49fa04b3582.png)
 
