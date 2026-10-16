@@ -18,7 +18,7 @@
 2. [2026-10-06 – Journal Entry 2: Schematic Capture & PCB Design in KiCad](#2026-10-06-journal-entry-2-schematic-capture-pcb-design-in-k)
 3. [2026-10-06 – Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master Hub schematic and custom PCB layout in KiCad! (i forgot i have to do this too thats why in journal 2 i wrote the softwar](#2026-10-06-journal-entry-3-master-hub-schematic-pcb-layout-i)
 4. [2026-10-07 – Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting](#2026-10-07-journal-entry-4-platformio-setup-c-environment-tr)
-5. [2026-10-08 – How I Got There](#2026-10-08-how-i-got-there)
+5. [2026-10-08 – Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation](#2026-10-08-journal-entry-5-pivoting-to-micropython-complete-)
 
 ## Design
 
@@ -181,28 +181,17 @@ also had to read thru this lovely piece of wrinting multiple times. https://docs
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/33792526c555d448ce1b59c32b7c51692b05ede78ff18061df11a955cf6963cb.png)
 
-### 2026-10-08 – How I Got There
+### 2026-10-08 – Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation
 
 **7.5h**
 
+Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation
+Session Goal & Background I decided to drop C++ today and switch the project over to MicroPython. Arduino C++  was way out of my leage, and having live REPL over serial will make debugging easier. Because MicroPython handles hardware adifferently, I spent this session figuring out the MicroPython port for the ESP32-C3, setting up toolchain, and writing the complete firmware for both the Master and Node units.
 How I Got There
-Research & Tooling Setup (1.5 hours):
-Studied the official Seeed Studio XIAO ESP32C3 pinouts and bootloader specifications.
-Installed esptool via Python pip and verified CLI commands for chip erasure and flashing.
-Sourced and downloaded the official MicroPython binary (SEEED_XIAO_ESP32C3-20260824-v1.29.0.bin).
-Installed and configured the MicroPico VS Code extension for serial connection management and file synchronization.
-Node Firmware Development (boot.py & main.py) (3 hours):
-Designed the modular file structure:
-boot.py: Configured to auto-enable Wi-Fi Station interface (network.WLAN(network.STA_IF)) on boot—a requirement for ESP-NOW operation without an AP connection.
-main.py: Reads 16-bit analog values from pin ADC(0), converts readings to a 0–100% moisture scale, packages payload data, and toggles GPIO2 output to actuate the solenoid valve when an "OPEN" command is received.
-Master Firmware & ESP-NOW Protocol Logic (3 hours):
-Developed the Master node script to listen for incoming string payloads ("node_id:moisture").
-Added dynamic peer registration using incoming MAC addresses so the Master can respond to any Node on the network.
-Implemented logic to issue an "OPEN" trigger whenever soil moisture drops below the 30% threshold.
-Summary (TL;DR)
-Switched the DripLogic project to MicroPython, set up esptool and MicroPico, researched ESP32-C3 hardware registers, and wrote the complete boot.py and main.py firmware for both Master and Node units with built-in ESP-NOW communication logic.
-What's Next
-Week 6 hardware arrives: erase flash, upload the .bin firmware via esptool.py --chip esp32c3 write_flash 0x0, retrieve the Master MAC address, and run end-to-end hardware testing.
+Research & Tooling Setup (1.5 hours): I started by looking at the official ESP32C3 pinouts. I installed esptool via Python pip for chip wipes and flashing also downloaded the official MicroPython binary. To make development simpler, I also got  the MicroPico extension in VS Code so I could manage serial connections and sync files.
+Node Firmware Development (boot.py & main.py) (3 hours): Next, I structured the Node files. I used boot.py to auto-enable the Wi-Fi station interface (network.WLAN(network.STA_IF) right on boot needed for getting ESP-NOW to work without needing an actual router AP connection. Then I wrote main.py to read 16-bit analog values from ADC(0), map those raw readings into a  0–100% moisture scale, package the payload, and watch for an "OPEN" command, GPIO2 to trigger the solenoid valve.
+Master Firmware & ESP-NOW Protocol Logic (3 hours): I spent time on the Master node script. It listens for incoming string payloads formatted as node_id:moisture. I added dynamic peer registration using incoming MAC addresses so the Master can talk to any Node on the network, plus the threshold to automatically send "OPEN" command whenever the soil moisture drops below 30%.
+Summary Switched over to MicroPython, got esptool and MicroPico running, and wrote the boot.py and main.py firmware for both Master and Node units, complete with working ESP-NOW communication ( in theory :) )
 Time spent this session: 7.5 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/039bccb4a4313fd38820167b720ecffd8c85f58b5444d1d680a2b49e1b01a7a0.png)
