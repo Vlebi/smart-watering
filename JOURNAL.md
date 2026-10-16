@@ -91,20 +91,21 @@ Time spent this session: 2.5 hours
 **4h**
 
 Journal Entry 2: Schematic Capture & PCB Design in KiCad
-Designed the Node schematic and custom PCB layout in KiCad!
+Designed the Node schematic and layout in KiCad!
 Session Goal & Background
-Before writing low-level code, I needed a clean hardware layout to ensure correct power routing, inductive load suppression, and pin assignment. My goal for this session was to create the full schematic diagram and custom PCB layout for the DripLogic Node in KiCad 10.
-How I Got There
+Before writing code, I need a hardware layout to check power routing,and pins. My goal for this session was to create the full schematic diagram and layout for the DripLogic Node.
+How I Got There:
 Schematic Design (2 hours):
-MCU Subsystem: Placed the XIAO ESP32-C3 symbol, breaking out GPIO0 for the capacitive sensor's analog input (A0) and GPIO2 for the valve control trigger.
-MOSFET Driver Stage: Designed the low-side switching circuit for the solenoid valve using an N-channel MOSFET. Added a 10kΩ pull-down resistor on the gate to keep the valve closed during ESP32 bootup, and a 1N4007 flyback diode across the valve terminals to snub voltage spikes caused by inductive collapse.
-PCB Layout & Routing (2 hour):
-Drawed up the board, wired the ratlines, made sure its all clean. I struggled a bit with the setup for the esp, the pin mapping so i had to replace my esp 32 drawing with another one.
-Summary (TL;DR)
-Designed the complete DripLogic Node hardware schematic and custom PCB layout in KiCad 10, incorporating MOSFET gate pull-downs, flyback diode protection.
-What's Next
-Set up VS Code with PlatformIO and develop the baseline C++ codebase.
-Time spent this session: 4 hours
+MCU Subsystem: Placed the XIAO ESP32-C3 symbol, GPIO0 for the capacitive sensor's analog input and GPIO2 for the valve control trigger.
+MOSFET Driver Stage: Designed the low-side switching circuit for the solenoid valve using an N-channel MOSFET. Added a 10kΩ pull-down resistor on the gate to keep the valve closed during bootup, and a 1N4007 flyback diode across the valve terminals.
+Power Rail Management: Added screw terminal blocks for external power input and sensor connectors.
+PCB Layout & Routing (1 hour):
+Drawed up the board, wired the ratlines, made sure its all clean.
+Summary:
+Designed the complete DripLogic Node hardware schematic and custom PCB layout in, used MOSFET gate pull-downs, flyback diode protection, and ground planes.
+What's Next:
+Modell the main pcb.
+Time spent this session: 3 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/4f110bb5931c770f595eaefd2441fc1361ebad73eb633dcccdf8d49fa04b3582.png)
 
