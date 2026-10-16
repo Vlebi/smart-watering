@@ -122,15 +122,15 @@ Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master 
 Session Goal & Background
 With the Node hardware designed, I needed to create the Master Hub controller board. My goal for this session was to capture the schematic for the Master unit in KiCad, interfacing an I2C OLED display (only the pins for now), status LED, and tactile button, and then route the physical PCB traces.
 How I Got There Schematic Capture (1.5 hours):
-Placed the ESP32-C3 SuperMini board as the main controller core.
-Display Interface: Wired a 4-pin header (J1) for the I2C OLED display, mapping Pin 1 to GND, Pin 2 to 3V3, Pin 3 to GPIO1 (SDA), and Pin 4 to GPIO0 (SCL).
-Status Indication & Input: Connected a status LED (D1) to GPIO3 via a 220 ohm current-limiting resistor (R1) to GND, and added a tactile push button (SW1) connected between GPIO2 and GND for user inputs.
+Placed the ESP32-C3 as the main core.
+Display Interface: Wired a 4-pin header (J1) for the I2C OLED display (more on this in display week)
+Status Indication & Input: Connected a status LED (D1) to GPIO3 with a 220 ohm current-limiting resistor (R1) to GND, and added abutton (SW1) connected between GPIO2 and GND for user inputs.
 Circuit Cleanup: Placed No-Connect flags on all unused pins (GPIO4-GPIO10, GPIO20, GPIO21, 5V) and attached a power flag (PWR_FLAG) to the ground rail.
 PCB Layout & Ratlines Routing (1.5 hours):
-Placed components to keep trace lengths short and organized around the ESP32-C3 footprint.
-Routed signal ratlines for I2C communication, LED driving, and button input on a two-layer board with ground copper fills.
-Ran Design Rule Checks (DRC) to ensure zero shorts or unrouted nets.
-Summary (TL;DR) Designed the Master Hub schematic and PCB layout in KiCad, integrating an I2C display header, status LED, and tactile switch on the ESP32-C3 SuperMini platform.
+Placed components so that i keep trace lengths short and organized around the ESP32-C3.
+Routed signal ratlines for I2C, LED, and button.
+Ran DRC, it came back all good.
+Summary (TL;DR) Designed the Master Hub schematic and PCB layout in KiCad, integrating a display header, status LED, and a button.
 What's Next: Set up VS Code with PlatformIO to begin developing the baseline C++ codebase.
 Time spent this session: 3 hours
 
