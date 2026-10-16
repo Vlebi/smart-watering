@@ -17,7 +17,7 @@
 1. [2026-10-06 – ![pic3](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/cc680054508a955608ac4a32b1f1ab2cb1809b1edc0751a120fbd79a084b52b5.png)](#2026-10-06-pic3httpshalflifehackclub-assetscomhackclub-half-)
 2. [2026-10-06 – Journal Entry 2: Schematic Capture & PCB Design in KiCad](#2026-10-06-journal-entry-2-schematic-capture-pcb-design-in-k)
 3. [2026-10-06 – Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master Hub schematic and custom PCB layout in KiCad! (i forgot i have to do this too thats why in journal 2 i wrote the softwar](#2026-10-06-journal-entry-3-master-hub-schematic-pcb-layout-i)
-4. [2026-10-07 – PlatformIO Setup & C++ Environment Troubleshooting](#2026-10-07-platformio-setup-c-environment-troubleshooting)
+4. [2026-10-07 – Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting](#2026-10-07-journal-entry-4-platformio-setup-c-environment-tr)
 5. [2026-10-08 – How I Got There](#2026-10-08-how-i-got-there)
 
 ## Design
@@ -140,32 +140,32 @@ Time spent this session: 3 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/eb1fc784d1c63a156bc743efafa494049cc95cf688d64f892082e8faccd45026.png)
 
-### 2026-10-07 – PlatformIO Setup & C++ Environment Troubleshooting
+### 2026-10-07 – Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting
 
 **5h**
 
-PlatformIO Setup & C++ Environment Troubleshooting
+Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting
 Fought VS Code & PlatformIO configuration errors for ESP32-C3!
 Session Goal & Background
-With the hardware schematic finalized, I set up my local development workspace in VS Code using PlatformIO to build the initial C++/Arduino codebase for the ESP32-C3 Node and Master controllers.
+With the hardware schematic finalized, I set up my workspace in VS Code using PlatformIO to build the C++ codebase for the ESP32-C3 Node and Master controllers.
 How I Got There
 Toolchain Setup & Dependencies (2 hours):
-Installed the PlatformIO IDE extension in VS Code.
-Initialized a project for the esp32-c3-devkitm-1 target.
+Installed the PlatformIO extension in VSC.
+created a project for the esp32-c3-devkitm-1 target.
 Hit a core toolchain error during package installation: PIO Core Call Error: "[WinError 2] The system cannot find the file specified".
-Resolved this by clearing background Python processes, restarting VS Code, and allowing PlatformIO's package manager to re-fetch the Espressif 32 platform files and GCC toolchains. (also re-installed PlatformIO multiple times-messed around in its files but that did not help)
+Fixed by stopping Python processes, restarting VS Code, and allowing PlatformIO's package manager to re-fetch the Espressif 32 platform files and GCC toolchains.
 USB CDC Configuration (0.5 hours):
-The ESP32-C3 SuperMini uses native USB CDC for serial output instead of an external USB-to-UART bridge chip. Without explicitly enabling USB CDC flags, Serial.print() outputs freeze or fail to display in the Serial Monitor. I updated platformio.ini (took some time to figure out)
+The ESP32-C3 uses native USB CDC for serial output instead of an USB-to-UART bridge chip. Without enabling USB CDC flags, Serial.print() outputs freeze or fail to display in the Serial Monitor. I updated platformio.ini
 C++ Code Structure (2.5 hours):
 Wrote the initial C++ codebase in src/main.cpp:
-Defined C structures (struct_node_data and struct_command) for packed ESP-NOW transmissions.
-Implemented esp_now_register_recv_cb() callbacks to parse incoming solenoid trigger commands.
+Created C structures (struct_node_data and struct_command) for ESP-NOW transmissions.
+Implemented esp_now_register_recv_cb() callbacks to look for incoming solenoid trigger commands.
 Configured ADC reading logic for pin A0 mapped to soil moisture percentages.
-Summary (TL;DR)
-Configured PlatformIO in VS Code, resolved toolchain execution errors, configured USB CDC flags for ESP32-C3 serial debugging, and wrote the baseline C++ ESP-NOW firmware structure.
+Summary
+Configured PlatformIO in VS Code, fixed toolchain execution errors, configured USB CDC flags for ESP32-C3 debugging, and wrote the baseline C++ ESP-NOW firmware structure.
 What's Next
-Evaluate if C++ is fast enough to iterate on or if pivoting to MicroPython would offer cleaner code and easier debugging. (should have done this before writing the nodes code)
-Time spent this session: 5 hours
+Evaluate if C++ is fast enough to iterate on or if pivoting to MicroPython would offer cleaner code and easier debugging.
+Time spent this session: 6 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/5d91d4fe7b36390f8d6f2d3309f27fbd224f965ea130a0931303eccfa8fc2635.png)
 
