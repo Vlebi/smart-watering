@@ -4,7 +4,7 @@
 <!-- Generated: 2026-10-08T14:31:58.547Z -->
 
 > [!NOTE]
-> This devlog is mirrored from [Half Life](https://halflife.hackclub.com). Editing it here will not change the platform's copy, and the next sync overwrites this file.
+> This devlog is mirrored from [Half Life](https://halflife.hackclub.com) – [open the project](https://halflife.hackclub.com/projects/cmuutgy4s0aby01smqy0ujp5q). Editing it here will not change the platform's copy, and the next sync overwrites this file.
 
 > I thought about what project to create, and i decided to build  one which I will actually use/ solves one of my actuall problems, for the life of me, I always forget to water my plants, the main idea is that i have a main board running my main script and a few smaller "nodes " at each plant whit the sensors and the watering mechanism. Communication between the main and node boards will be wireless (esp- now),
 
@@ -32,20 +32,56 @@
 
 ![pic1](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/484e4febea091e350870926e1009d0009d004c81f836be8c13ce573f01f8a47a.png)
 
-Project Brainstorming & Architecture Design
+Journal Entry 1: Project Brainstorming & Architecture Design
 Designed the DripLogic wireless automated irrigation architecture!
 Session Goal & Background
-I wanted to build an automated smart irrigation system called DripLogic to solve the problem of overwatering and underwatering plants. My goal for this session was to map out the system architecture, select the right hardware components, choose a wireless communication protocol independent of home Wi-Fi routers, and compile a Bill of Materials (BOM).
-How I Got There
+I wanted to build an automated watering system to solve my problem of overwatering and underwatering plants. My goal for now was to build out the core idea, select the right hardware components, choose a wireless communication protocol independent of home Wi-Fi routers, and compile a Bill of Materials (BOM).
 Hardware Selection & BOM Compilation (1 hour):
-Selected the ESP32-C3 platform (specifically the XIAO ESP32C3 / SuperMini form factor) for its low power consumption, built-in USB CDC native serial interface, tiny footprint, and affordable price.
-Chose capacitive soil moisture sensors over resistive ones to prevent pin corrosion in wet soil.
-Selected 5V/12V solenoid valves driven by an N-channel MOSFET circuit (AO3400A / IRLZ44N) with flyback diode protection (1N4007) and pull-down resistors to prevent floating gate states.
+Selected the ESP32-C3 ( XIAO ESP32C3) for its price, power consumption and ESP-now.
+Choose capacitive soil moisture sensors over resistive ones since resistive ones corrode
+Selected 5V/12V solenoid valves driven by an N-channel MOSFET circuit (AO3400A / IRLZ44N) with diode protection (1N4007) and pull-down.
 Network Topology (ESP-NOW) (1.5 hours):
-Standard Wi-Fi router dependency was ruled out due to power draw and setup friction. I opted for Espressif's ESP-NOW protocol, enabling peer-to-peer MAC-address-based communication between the Master controller and Node units with negligible latency. Also wrote a BOM (reserched specific part types, not just generic names like diode).
+Standard Wi-Fi router dependency was ruled out due to power draw and setup friction. I opted for Espressif's ESP-NOW protocol, enabling peer-to-peer MAC-address-based communication between the Master controller and Node units with negligible latency.
+Bill of Materials (BOM)
+Item / Component
+Qty
+Purpose / Description
+Estimated Cost
+XIAO ESP32-C3 / SuperMini
+2
+Master hub & Sensor/Valve Node MCU
+$7.50
+Capacitive Soil Moisture Sensor v1.2
+1
+Analog soil moisture measurement
+$1.20
+5V / 12V DC Solenoid Valve
+1
+Water flow control mechanism
+$3.50
+N-Channel Logic-Level MOSFET (AO3400A / IRLZ44N)
+1
+Solenoid driver switch
+$0.40
+1N4007 Flyback Diode
+1
+Inductive spike protection for MOSFET
+$0.10
+10kΩ Resistor
+1
+MOSFET gate pull-down resistor
+$0.05
+Buck Converter / Power Module (LM2596 / Mini360)
+1
+Power step-down for solenoid/ESP32
+$1.20
+Custom PCB / Breadboard & Wires
+1
+Hardware interconnects
+$2.00
 
-Summary (TL;DR)
-Brainstormed the DripLogic system architecture, compiled the full BOM for Master and Node units, and selected ESP32-C3 modules using ESP-NOW for low-power wireless irrigation control.
+Summary
+Worked out the core idea, created the BOM for Master and Node units, and selected ESP32-C3 modules using ESP-NOW for low-power wireless control.
 What's Next
 Design the schematic circuit and custom PCB layout in KiCad for the Node controller.
 Time spent this session: 2.5 hours
