@@ -15,10 +15,10 @@
 ## Contents
 
 1. [2026-10-06 – ![pic3](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/cc680054508a955608ac4a32b1f1ab2cb1809b1edc0751a120fbd79a084b52b5.png)](#2026-10-06-pic3httpshalflifehackclub-assetscomhackclub-half-)
-2. [2026-10-06 – Journal Entry 2: Schematic Capture & PCB Design in KiCad](#2026-10-06-journal-entry-2-schematic-capture-pcb-design-in-k)
-3. [2026-10-06 – Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master Hub schematic and custom PCB layout in KiCad! (i forgot i have to do this too thats why in journal 2 i wrote the softwar](#2026-10-06-journal-entry-3-master-hub-schematic-pcb-layout-i)
-4. [2026-10-07 – Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting](#2026-10-07-journal-entry-4-platformio-setup-c-environment-tr)
-5. [2026-10-08 – Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation](#2026-10-08-journal-entry-5-pivoting-to-micropython-complete-)
+2. [2026-10-06 – Journal 2.](#2026-10-06-journal-2)
+3. [2026-10-06 – Journal 3.](#2026-10-06-journal-3)
+4. [2026-10-07 – Journal 4](#2026-10-07-journal-4)
+5. [2026-10-08 – Journal Entry 5:](#2026-10-08-journal-entry-5)
 
 ## Design
 
@@ -32,80 +32,36 @@
 
 ![pic1](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/484e4febea091e350870926e1009d0009d004c81f836be8c13ce573f01f8a47a.png)
 
-Journal Entry 1: Project Brainstorming & Architecture Design
-Designed the DripLogic wireless automated irrigation architecture!
-Session Goal & Background
-I wanted to build an automated watering system to solve my problem of overwatering and underwatering plants. My goal for now was to build out the core idea, select the right hardware components, choose a wireless communication protocol independent of home Wi-Fi routers, and compile a Bill of Materials (BOM).
-Hardware Selection & BOM Compilation (1 hour):
-Selected the ESP32-C3 ( XIAO ESP32C3) for its price, power consumption and ESP-now.
-Choose capacitive soil moisture sensors over resistive ones since resistive ones corrode
-Selected 5V/12V solenoid valves driven by an N-channel MOSFET circuit (AO3400A / IRLZ44N) with diode protection (1N4007) and pull-down.
-Network Topology (ESP-NOW) (1.5 hours):
-Standard Wi-Fi router dependency was ruled out due to power draw and setup friction. I opted for Espressif's ESP-NOW protocol, enabling peer-to-peer MAC-address-based communication between the Master controller and Node units with negligible latency.
-Bill of Materials (BOM)
-Item / Component
-Qty
-Purpose / Description
-Estimated Cost
-XIAO ESP32-C3 / SuperMini
-2
-Master hub & Sensor/Valve Node MCU
-$7.50
-Capacitive Soil Moisture Sensor v1.2
-1
-Analog soil moisture measurement
-$1.20
-5V / 12V DC Solenoid Valve
-1
-Water flow control mechanism
-$3.50
-N-Channel Logic-Level MOSFET (AO3400A / IRLZ44N)
-1
-Solenoid driver switch
-$0.40
-1N4007 Flyback Diode
-1
-Inductive spike protection for MOSFET
-$0.10
-10kΩ Resistor
-1
-MOSFET gate pull-down resistor
-$0.05
-Buck Converter / Power Module (LM2596 / Mini360)
-1
-Power step-down for solenoid/ESP32
-$1.20
-Custom PCB / Breadboard & Wires
-1
-Hardware interconnects
-$2.00
+Journal 1: Thought out the project.
+So, today i designed the architecture of  my project.
+My goal is to build an automatic watering system, since i always over / underwater my plants. Today i will be developing the idea, select the component and choose some sort of wireless communication that can work without routers or home wifi.
 
-Summary
-Worked out the core idea, created the BOM for Master and Node units, and selected ESP32-C3 modules using ESP-NOW for low-power wireless control.
-What's Next
-Design the schematic circuit and custom PCB layout in KiCad for the Node controller.
-Time spent this session: 2.5 hours
+Hardware selection and writing bom. (1hour)
+Choose esp32-c3 since its cheap, power efficient and supports ESP-now, picked capacitive moisture sensors over resistive ones to avoid corrosion.
+selected 12v solenoid valves + MOSFET with a diode and pull down resistor.
 
-### 2026-10-06 – Journal Entry 2: Schematic Capture & PCB Design in KiCad
+Network (1.5 hours)
+As i mentioned already i would like to stay away from home routers. But luckily there is a wonderful thing called ESP-now, which uses peer-peer communications based off MAC address.
+
+To summarize: Today i built out the idea to a plan, created the bom and worked out how the wireless communication will work.
+
+### 2026-10-06 – Journal 2.
 
 **4h**
 
-Journal Entry 2: Schematic Capture & PCB Design in KiCad
-Designed the Node schematic and layout in KiCad!
-Session Goal & Background
-Before writing code, I need a hardware layout to check power routing,and pins. My goal for this session was to create the full schematic diagram and layout for the DripLogic Node.
-How I Got There:
-Schematic Design (2 hours):
-MCU Subsystem: Placed the XIAO ESP32-C3 symbol, GPIO0 for the capacitive sensor's analog input and GPIO2 for the valve control trigger.
-MOSFET Driver Stage: Designed the low-side switching circuit for the solenoid valve using an N-channel MOSFET. Added a 10kΩ pull-down resistor on the gate to keep the valve closed during bootup, and a 1N4007 flyback diode across the valve terminals.
-Power Rail Management: Added screw terminal blocks for external power input and sensor connectors.
-PCB Layout & Routing (1 hour):
-Drawed up the board, wired the ratlines, made sure its all clean.
-Summary:
-Designed the complete DripLogic Node hardware schematic and custom PCB layout in, used MOSFET gate pull-downs, flyback diode protection, and ground planes.
-What's Next:
-Modell the main pcb.
-Time spent this session: 4 hours
+Journal 2.
+
+Modelled and designed the pcb in KiCad
+My goal for today was to create the hardware layout for the Node module.
+Schematic design (2hours)
+Placed the ESP32 symbol on the drawing board after figuring out how to do that ( took quite a while). Used GPIO0 for the moisture sensor’s input and GPIO2 for the valve
+Mosfet:
+-designed a low-side switching system for the valve. i used a MOSFET for this, also added a 1N4007 diode and a 10k ohm pull down resistor.
+I have also added screw terminal blocks for power input.
+PCB routing and layout (1 hour)
+positioned my modules to the ratlines so they look somewhat acceptable and not like spaghetti.
+
+To summarize: Today I designed the Node pcb layout and schematic, using mosfet gates, pull downs and diodes.
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/4f110bb5931c770f595eaefd2441fc1361ebad73eb633dcccdf8d49fa04b3582.png)
 
@@ -114,25 +70,22 @@ Time spent this session: 4 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/674db0bacb946ff147872f05a0ae24d2ea16ba70e8fbfe4612ddf2677a124008.png)
 
-### 2026-10-06 – Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master Hub schematic and custom PCB layout in KiCad! (i forgot i have to do this too thats why in journal 2 i wrote the softwar
+### 2026-10-06 – Journal 3.
 
 **3h**
 
-Journal Entry 3: Master Hub Schematic & PCB Layout in KiCad Designed the Master Hub schematic and custom PCB layout in KiCad! (i forgot i have to do this too thats why in journal 2 i wrote the software part)
-Session Goal & Background
-With the Node hardware designed, I needed to create the Master Hub controller board. My goal for this session was to capture the schematic for the Master unit in KiCad, interfacing an I2C OLED display (only the pins for now), status LED, and tactile button, and then route the physical PCB traces.
-How I Got There Schematic Capture (1.5 hours):
-Placed the ESP32-C3 as the main core.
-Display Interface: Wired a 4-pin header (J1) for the I2C OLED display (more on this in display week)
-Status Indication & Input: Connected a status LED (D1) to GPIO3 with a 220 ohm current-limiting resistor (R1) to GND, and added abutton (SW1) connected between GPIO2 and GND for user inputs.
-Circuit Cleanup: Placed No-Connect flags on all unused pins (GPIO4-GPIO10, GPIO20, GPIO21, 5V) and attached a power flag (PWR_FLAG) to the ground rail.
-PCB Layout & Ratlines Routing (1.5 hours):
-Placed components so that i keep trace lengths short and organized around the ESP32-C3.
-Routed signal ratlines for I2C, LED, and button.
-Ran DRC, it came back all good.
-Summary (TL;DR) Designed the Master Hub schematic and PCB layout in KiCad, integrating a display header, status LED, and a button.
-What's Next: Set up VS Code with PlatformIO to begin developing the baseline C++ codebase.
-Time spent this session: 3 hours
+Journal 3.
+
+Today I designed the schematic and pcb layout for main.
+My goal for today is: Draw the schematic for master unit and make the layout in KiCad.
+I needed a I2C display pins, status LED, and a button.
+Schematic drawing: (1.5h)
+Now holding the knowledge to place a ESP32 drawing on the layout it was a bit simpler, wired the 4 pin header for the display.  Placed the LED and wired it to GPIO3 with 220 ohm resistor to GND.wired the button to GPIO2
+Placed no connect flags and powerflags so erc would not whine.
+PCB layout and ratlines (1.5h)
+Placed components in the pcb designer to keep ratlines from spaghetizizing (just made up this word, pretty cool i think)
+
+To sum it up: Designed the Master schematic and pcb.
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/f96c3017e1adece18ba6001f4e5c54e575d2bf36859c42b57f466089fe0244cb.png)
 
@@ -140,32 +93,31 @@ Time spent this session: 3 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/eb1fc784d1c63a156bc743efafa494049cc95cf688d64f892082e8faccd45026.png)
 
-### 2026-10-07 – Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting
+### 2026-10-07 – Journal 4
 
 **5h**
 
-Journal Entry 4: PlatformIO Setup & C++ Environment Troubleshooting
-Fought VS Code & PlatformIO configuration errors for ESP32-C3!
-Session Goal & Background
-With the hardware schematic finalized, I set up my workspace in VS Code using PlatformIO to build the C++ codebase for the ESP32-C3 Node and Master controllers.
-How I Got There
-Toolchain Setup & Dependencies (2 hours):
-Installed the PlatformIO extension in VSC.
-created a project for the esp32-c3-devkitm-1 target.
-Hit a core toolchain error during package installation: PIO Core Call Error: "[WinError 2] The system cannot find the file specified".
-Fixed by stopping Python processes, restarting VS Code, and allowing PlatformIO's package manager to re-fetch the Espressif 32 platform files and GCC toolchains.
-USB CDC Configuration (0.5 hours):
-The ESP32-C3 uses native USB CDC for serial output instead of an USB-to-UART bridge chip. Without enabling USB CDC flags, Serial.print() outputs freeze or fail to display in the Serial Monitor. I updated platformio.ini
-C++ Code Structure (2.5 hours):
-Wrote the initial C++ codebase in src/main.cpp:
-Created C structures (struct_node_data and struct_command) for ESP-NOW transmissions.
-Implemented esp_now_register_recv_cb() callbacks to look for incoming solenoid trigger commands.
-Configured ADC reading logic for pin A0 mapped to soil moisture percentages.
-Summary
-Configured PlatformIO in VS Code, fixed toolchain execution errors, configured USB CDC flags for ESP32-C3 debugging, and wrote the baseline C++ ESP-NOW firmware structure.
-What's Next
-Evaluate if C++ is fast enough to iterate on or if pivoting to MicroPython would offer cleaner code and easier debugging.
-Time spent this session: 6 hours
+Journal 4
+
+Set up PlatformIo and wrote c++
+
+My goal for today is: Since the hardware is now done I should now setup my workspace in VS Code.
+
+Setup (2 hours)
+Installed PlatformIO in VSC (2 hours)
+Then got flipped off with an error.
+“PIO Core Call Error: "[WinError 2] The system cannot find the file specified".”
+Well obviously you start with trying again, which did not fix the issue, so i redownloaded it, checked python versions, updated python then i fixed it by  allowing PlatformIO's package manager to re-fetch the Espressif 32 platform files and GCC toolchains.
+USB CDC config  (0,5h)
+Since the ESP32-C3 uses USB CDC, Serial.print() outputs freeze or fails to display in the serial monitor. Fixed in platformio.ini
+c++ code (2.5 hours)
+soo c++ sucks, anyway. I wrote the c++ codebase in src/main.cpp
+Created the C structures for ESP-NOW
+Added esp_now_register_recv_cb() callback to look for solenoid commands. Configure ADC logic to for pin A0 to calculate soil moisture.
+
+Summarized: configured PlatofrmIO in VSC, fixed errors, configd CDC flags, and wrote the main c++ code
+
+Time spent: 6 hours
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/5d91d4fe7b36390f8d6f2d3309f27fbd224f965ea130a0931303eccfa8fc2635.png)
 
@@ -181,18 +133,24 @@ also had to read thru this lovely piece of wrinting multiple times. https://docs
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/33792526c555d448ce1b59c32b7c51692b05ede78ff18061df11a955cf6963cb.png)
 
-### 2026-10-08 – Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation
+### 2026-10-08 – Journal Entry 5:
 
 **7.5h**
 
-Journal Entry 5: Pivoting to MicroPython & Complete Firmware Preparation
-Session Goal & Background I decided to drop C++ today and switch the project over to MicroPython. Arduino C++  was way out of my leage, and having live REPL over serial will make debugging easier. Because MicroPython handles hardware adifferently, I spent this session figuring out the MicroPython port for the ESP32-C3, setting up toolchain, and writing the complete firmware for both the Master and Node units.
-How I Got There
-Research & Tooling Setup (1.5 hours): I started by looking at the official ESP32C3 pinouts. I installed esptool via Python pip for chip wipes and flashing also downloaded the official MicroPython binary. To make development simpler, I also got  the MicroPico extension in VS Code so I could manage serial connections and sync files.
-Node Firmware Development (boot.py & main.py) (3 hours): Next, I structured the Node files. I used boot.py to auto-enable the Wi-Fi station interface (network.WLAN(network.STA_IF) right on boot needed for getting ESP-NOW to work without needing an actual router AP connection. Then I wrote main.py to read 16-bit analog values from ADC(0), map those raw readings into a  0–100% moisture scale, package the payload, and watch for an "OPEN" command, GPIO2 to trigger the solenoid valve.
-Master Firmware & ESP-NOW Protocol Logic (3 hours): I spent time on the Master node script. It listens for incoming string payloads formatted as node_id:moisture. I added dynamic peer registration using incoming MAC addresses so the Master can talk to any Node on the network, plus the threshold to automatically send "OPEN" command whenever the soil moisture drops below 30%.
-Summary Switched over to MicroPython, got esptool and MicroPico running, and wrote the boot.py and main.py firmware for both Master and Node units, complete with working ESP-NOW communication ( in theory :) )
-Time spent this session: 7.5 hours
+Journal Entry 5:
+Moved to MicroPython
+
+ I decided to drop C++ today since i realised i have a choice and switch the project over to MicroPython. Arduino C++  was way out of my leage, and having REPL over serial will make debugging easier. Since MicroPython handles hardware differently, I spent this session figuring out MicroPython for the ESP32-C3, and writing the complete firmware for both Master and Node units.
+
+I installed esptool using pip and also downloaded the MicroPython lib. To make my life easier i got the MicroPico extension in VSC so that i can easily sync files and manage connections.
+
+Next, I structured the files. Used boot.py to automatically turn on the WIFI (ESP-now)
+Then i wrote the main . py to read the analog values from the moisture sensor and convert the readings to 0-100%, package the payload and also watch for an “OPEN” message. and use GPIO2 to trigger the valve.
+
+Master code  and ESP-NOW logic:
+I spent a lot of time on the master node script. It looks for incoming string payloads formatted as node_id:moisture. Also added dynamic registration using MAC addresses so the master can communicate with any Node near it. Also sends a command to the device with said MAC address when it receives moisture below 30%.
+
+Summarized: Switched to MicroPython, got esptool and MicroPico. wrote boot. py and main. py for both master and node units.
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/sCBI3ojvDWBP38LVSmrM83tqWftTfcqi/039bccb4a4313fd38820167b720ecffd8c85f58b5444d1d680a2b49e1b01a7a0.png)
 
