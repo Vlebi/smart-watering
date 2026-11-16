@@ -10,7 +10,7 @@
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
-| Week 1 | Tier 1 | 25h | 6 |
+| Week 1 | Tier 1 | 24.7h | 6 |
 
 ## Contents
 
@@ -174,7 +174,7 @@ nodes need a boot.py since when they are not active they are set to sleep to hel
 
 ### 2026-11-16: Fixed issues from the review!
 
-**3h**
+**2.7h**
 
 Fixed issues from the review!
 
